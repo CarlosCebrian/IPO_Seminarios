@@ -1,6 +1,5 @@
 package _interface;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,7 +9,6 @@ import java.awt.Toolkit;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
-import javax.swing.JSplitPane;
 import javax.swing.JButton;
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -22,6 +20,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.SwingConstants;
 
 public class Principal extends JFrame {
 
@@ -85,6 +86,7 @@ public class Principal extends JFrame {
 		panel.add(chckbxLogo);
 		
 		btnEntrar = new JButton("Entrar");
+		btnEntrar.addActionListener(new BtnEntrarActionListener());
 		btnEntrar.setEnabled(false);
 		btnEntrar.setBounds(291, 128, 86, 23);
 		panel.add(btnEntrar);
@@ -105,6 +107,7 @@ public class Principal extends JFrame {
 		txtUser.setColumns(10);
 		
 		txtPass = new JPasswordField();
+		txtPass.addKeyListener(new TxtPassKeyListener());
 		txtPass.addActionListener(new TxtPassActionListener());
 		txtPass.setEnabled(false);
 		txtPass.setBounds(291, 58, 86, 20);
@@ -116,6 +119,7 @@ public class Principal extends JFrame {
 		panel.add(lblAviso);
 		
 		lblEstado = new JLabel("");
+		lblEstado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEstado.setBounds(0, 174, 433, 46);
 		contentPane.add(lblEstado);
 		lblEstado.setOpaque(true);
@@ -154,7 +158,7 @@ public class Principal extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			lblPassword.setEnabled(true);
 			txtPass.setEnabled(true);
-			
+			txtPass.requestFocus();
 		}
 	}
 	private class TxtPassActionListener implements ActionListener {
@@ -167,6 +171,7 @@ public class Principal extends JFrame {
 			else{
 				lblAviso.setText("CONTRASEÑA INCORRECTA");
 				lblAviso.setBackground(Color.RED);
+				btnEntrar.setEnabled(false);
 			}
 		}
 	}
@@ -174,6 +179,20 @@ public class Principal extends JFrame {
 		public void itemStateChanged(ItemEvent arg0) {
 			lblEstado.setText("Evento de Item: ItemStateChanged. Checkbox " +arg0.getStateChange());
 			lblLogo.setVisible(chckbxLogo.isSelected());
+		}
+	}
+	private class BtnEntrarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			//System.exit(0);
+			SecondWindow sw = new SecondWindow();
+			sw.setVisible(true);
+			dispose();
+		}
+	}
+	private class TxtPassKeyListener extends KeyAdapter {
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			lblEstado.setText(""+arg0.getKeyChar());
 		}
 	}
 	
