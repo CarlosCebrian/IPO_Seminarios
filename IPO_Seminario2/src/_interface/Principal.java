@@ -70,7 +70,7 @@ public class Principal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 529, 554);
+		frame.setBounds(100, 100, 544, 553);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		pnlFicha = new JPanel();
@@ -219,6 +219,7 @@ public class Principal {
 		pnlFicha.add(scrollPane, gbc_scrollPane);
 		
 		taComentarios = new JTextArea();
+		taComentarios.setBorder(new TitledBorder(null, "Comentarios", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(taComentarios);
 		
 		btnGuardar = new JButton("Guardar");
