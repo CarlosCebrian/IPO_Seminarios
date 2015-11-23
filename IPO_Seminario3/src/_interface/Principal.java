@@ -48,6 +48,7 @@ public class Principal {
 		frame.getContentPane().add(desktopPane, BorderLayout.CENTER);
 		
 		VentanaLista v1 = new VentanaLista();
+		v1.setLocation(10, 11);
 		desktopPane.add(v1);
 		v1.setVisible(true);
 		

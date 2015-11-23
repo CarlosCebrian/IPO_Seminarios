@@ -23,6 +23,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JComboBox;
 
 public class Principal extends JFrame {
 
@@ -195,5 +196,4 @@ public class Principal extends JFrame {
 			lblEstado.setText(""+arg0.getKeyChar());
 		}
 	}
-	
 }
