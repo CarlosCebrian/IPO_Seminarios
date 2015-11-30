@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.awt.event.ActionEvent;
@@ -54,6 +56,7 @@ public class EditorGrafico {
 	private JButton btnRectangulo;
 	private JButton btnAnotacion;
 	private JScrollPane scrollPane;
+	private JTextField txtTexto = new JTextField();
 
 	private MiAreaDibujo miareadibujo;
 	private ImageIcon imagen;
@@ -198,6 +201,20 @@ public class EditorGrafico {
 					miareadibujo.addObjetoGrafico(new RectanguloGrafico(x, y, x, y, Color.RED));
 					break;
 				case TEXTO:
+					txtTexto.setBounds(x, y, 200,30);
+					txtTexto.setVisible(true);
+					txtTexto.requestFocus();
+					txtTexto.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent arg) {
+							if (!txtTexto.getText().equals("")){
+								miareadibujo.addObjetoGrafico(new TextoGrafico(x, y + 15, txtTexto.getText(), Color.BLUE));
+							}
+							txtTexto.setText("");
+							txtTexto.setVisible(false);
+							miareadibujo.repaint();
+						}
+					});
+					miareadibujo.add(txtTexto);
 				}
 			}
 		}

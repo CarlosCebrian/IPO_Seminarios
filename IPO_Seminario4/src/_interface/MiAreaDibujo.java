@@ -25,12 +25,14 @@ public class MiAreaDibujo extends JLabel {
 			ObjetoGrafico objg = objetosGraficos.get(i);
 			if (objg instanceof ImagenGrafico) {
 				g.drawImage(((ImagenGrafico) objg).getImagen(), objg.getX(), objg.getY(), null);
-			} 
-			else if (objg instanceof RectanguloGrafico) {
+			} else if (objg instanceof RectanguloGrafico) {
 				g.setColor(((RectanguloGrafico) objg).getColor());
 				int w = ((RectanguloGrafico) objg).getX1() - objg.getX();
 				int h = ((RectanguloGrafico) objg).getY1() - objg.getY();
 				g.drawRect(objg.getX(), objg.getY(), w, h);
+			} else {
+				g.setColor(((TextoGrafico) objg).getColor());
+				g.drawString(((TextoGrafico) objg).getTexto(), objg.getX(), objg.getY());
 			}
 		}
 	}
