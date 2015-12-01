@@ -7,11 +7,14 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.border.TitledBorder;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
@@ -19,7 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextArea;
 
-public class Principal {
+public class Principal{
 
 	private JFrame frame;
 	private JPanel pnlFicha;
@@ -41,26 +44,7 @@ public class Principal {
 	private JScrollPane scrollPane;
 	private JTextArea taComentarios;
 	private JButton btnGuardar;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal window = new Principal();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
+	
 	public Principal() {
 		initialize();
 	}
@@ -74,7 +58,7 @@ public class Principal {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		pnlFicha = new JPanel();
-		pnlFicha.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Ficha alumno", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
+		pnlFicha.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), MessagesSeminario2Inter.getString("Principal.pnlFicha.borderTitle"), TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK)); //$NON-NLS-2$
 		frame.getContentPane().add(pnlFicha, BorderLayout.CENTER);
 		GridBagLayout gbl_pnlFicha = new GridBagLayout();
 		gbl_pnlFicha.columnWidths = new int[]{0, 0, 77, 111, 70, 0, 0, 0};
@@ -83,7 +67,7 @@ public class Principal {
 		gbl_pnlFicha.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
 		pnlFicha.setLayout(gbl_pnlFicha);
 		
-		lblNumExpediente = new JLabel("Num Expediente");
+		lblNumExpediente = new JLabel(MessagesSeminario2Inter.getString("Principal.lblNumExpediente.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblNumExpediente = new GridBagConstraints();
 		gbc_lblNumExpediente.anchor = GridBagConstraints.EAST;
 		gbc_lblNumExpediente.insets = new Insets(0, 0, 5, 5);
@@ -108,7 +92,7 @@ public class Principal {
 		gbc_lblCheck.gridy = 0;
 		pnlFicha.add(lblCheck, gbc_lblCheck);
 		
-		btnCargarFoto = new JButton("Cargar Foto...");
+		btnCargarFoto = new JButton(MessagesSeminario2Inter.getString("Principal.btnCargarFoto.text")); //$NON-NLS-1$
 		btnCargarFoto.setIcon(new ImageIcon(Principal.class.getResource("/_interface/cargarFoto.png")));
 		GridBagConstraints gbc_btnCargarFoto = new GridBagConstraints();
 		gbc_btnCargarFoto.gridwidth = 2;
@@ -118,7 +102,7 @@ public class Principal {
 		pnlFicha.add(btnCargarFoto, gbc_btnCargarFoto);
 		
 		pnlFoto = new JScrollPane();
-		pnlFoto.setBorder(new TitledBorder(null, "Foto", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pnlFoto.setBorder(new TitledBorder(null, MessagesSeminario2Inter.getString("Principal.pnlFoto.borderTitle"), TitledBorder.LEADING, TitledBorder.TOP, null, null)); //$NON-NLS-1$
 		GridBagConstraints gbc_pnlFoto = new GridBagConstraints();
 		gbc_pnlFoto.gridheight = 4;
 		gbc_pnlFoto.gridwidth = 2;
@@ -131,7 +115,7 @@ public class Principal {
 		lblFoto = new JLabel("");
 		pnlFoto.setViewportView(lblFoto);
 		
-		lblNombre = new JLabel("Nombre:");
+		lblNombre = new JLabel(MessagesSeminario2Inter.getString("Principal.lblNombre.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.anchor = GridBagConstraints.WEST;
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
@@ -149,7 +133,7 @@ public class Principal {
 		pnlFicha.add(txtNombre, gbc_txtNombre);
 		txtNombre.setColumns(10);
 		
-		lblApellidos = new JLabel("Apellidos:");
+		lblApellidos = new JLabel(MessagesSeminario2Inter.getString("Principal.lblApellidos.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
 		gbc_lblApellidos.anchor = GridBagConstraints.WEST;
 		gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
@@ -167,7 +151,7 @@ public class Principal {
 		pnlFicha.add(txtApellidos, gbc_txtApellidos);
 		txtApellidos.setColumns(10);
 		
-		lblDni = new JLabel("DNI:");
+		lblDni = new JLabel(MessagesSeminario2Inter.getString("Principal.lblDni.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblDni = new GridBagConstraints();
 		gbc_lblDni.anchor = GridBagConstraints.WEST;
 		gbc_lblDni.insets = new Insets(0, 0, 5, 5);
@@ -183,7 +167,7 @@ public class Principal {
 		gbc_txtDNI.gridy = 4;
 		pnlFicha.add(txtDNI, gbc_txtDNI);
 		
-		lblTelefono = new JLabel("Telefono");
+		lblTelefono = new JLabel(MessagesSeminario2Inter.getString("Principal.lblTelefono.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblTelefono = new GridBagConstraints();
 		gbc_lblTelefono.anchor = GridBagConstraints.WEST;
 		gbc_lblTelefono.insets = new Insets(0, 0, 5, 5);
@@ -199,7 +183,7 @@ public class Principal {
 		gbc_txtTelefono.gridy = 5;
 		pnlFicha.add(txtTelefono, gbc_txtTelefono);
 		
-		btnCargarComentarios = new JButton("Cargar comentarios...");
+		btnCargarComentarios = new JButton(MessagesSeminario2Inter.getString("Principal.btnCargarComentarios.text")); //$NON-NLS-1$
 		btnCargarComentarios.setIcon(new ImageIcon(Principal.class.getResource("/_interface/cargarComentarios.png")));
 		GridBagConstraints gbc_btnCargarComentarios = new GridBagConstraints();
 		gbc_btnCargarComentarios.fill = GridBagConstraints.HORIZONTAL;
@@ -219,15 +203,19 @@ public class Principal {
 		pnlFicha.add(scrollPane, gbc_scrollPane);
 		
 		taComentarios = new JTextArea();
-		taComentarios.setBorder(new TitledBorder(null, "Comentarios", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		taComentarios.setBorder(new TitledBorder(null, MessagesSeminario2Inter.getString("Principal.taComentarios.borderTitle"), TitledBorder.LEADING, TitledBorder.TOP, null, null)); //$NON-NLS-1$
 		scrollPane.setViewportView(taComentarios);
 		
-		btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton(MessagesSeminario2Inter.getString("Principal.btnGuardar.text")); //$NON-NLS-1$
 		btnGuardar.setIcon(new ImageIcon(Principal.class.getResource("/_interface/guardar.png")));
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
 		gbc_btnGuardar.gridx = 6;
 		gbc_btnGuardar.gridy = 8;
 		pnlFicha.add(btnGuardar, gbc_btnGuardar);
+	}
+	
+	public JFrame get_frame(){
+		return this.frame;
 	}
 
 }
